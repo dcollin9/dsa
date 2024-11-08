@@ -14,6 +14,8 @@ func main() {
 	fmt.Println(val2)
 }
 
+// Time Complexity: O(logn)
+// Space Complexity: O(1)
 func binarySearchRange(low, high int) int {
 	for low <= high {
 		mid := (low + high) / 2
