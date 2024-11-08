@@ -10,6 +10,8 @@ func main() {
 	fmt.Println("Found 2: ", found2)
 }
 
+// Time complexity - O(logn)
+// Space complexity - O(1)
 func binarySearch(arr []int, target int) bool {
 	l := 0
 	r := len(arr) - 1
