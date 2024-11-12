@@ -18,7 +18,7 @@ func main() {
 }
 
 // search a binary search tree
-
+// Time Complexity: O(logn)
 func searchTree(root *helpers.TreeNode, val int) bool {
 	if root == nil {
 		return false
@@ -35,6 +35,7 @@ func searchTree(root *helpers.TreeNode, val int) bool {
 
 // insert into a binary search tree - maintain order
 // easiest way is to insert into a leaf node
+// Time Complexity: O(logn)
 func insertIntoBST(root *helpers.TreeNode, val int) *helpers.TreeNode {
 	if root == nil {
 		return &helpers.TreeNode{
