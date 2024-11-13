@@ -15,6 +15,11 @@ func main() {
 	insertIntoBST(root, 5)
 	found2 := searchTree(root, 5)
 	fmt.Println(found2)
+
+	// delete a value from the tree
+	deleteFromBST(root, 2)
+	found3 := searchTree(root, 2)
+	fmt.Println(found3)
 }
 
 // search a binary search tree
@@ -54,3 +59,40 @@ func insertIntoBST(root *helpers.TreeNode, val int) *helpers.TreeNode {
 }
 
 // delete from a binary search tree - maintain order even in a delete
+// Situations to consider: a node has 0 or 1 child. A target node has 2 children
+// have to handle all situations
+// Time Complexity: O(logn)
+// Space Complexity: O(logn) (for the call stack)
+func deleteFromBST(root *helpers.TreeNode, val int) *helpers.TreeNode {
+	if root == nil {
+		return nil
+	}
+
+	if val > root.Val {
+		root.Right = deleteFromBST(root.Right, val)
+	} else if val < root.Val {
+		root.Left = deleteFromBST(root.Left, val)
+	} else {
+		if root.Left == nil {
+			return root.Right
+		} else if root.Right == nil {
+			return root.Left
+		} else {
+			// The inorder successor is the left-most node in the right subtree of the target node
+			minNode := MinValueNode(root.Right)
+			root.Val = minNode.Val
+			root.Right = deleteFromBST(root.Right, minNode.Val)
+		}
+	}
+
+	return root
+}
+
+func MinValueNode(root *helpers.TreeNode) *helpers.TreeNode {
+	curr := root
+	for curr != nil && curr.Left != nil {
+		curr = curr.Left
+	}
+
+	return curr
+}
