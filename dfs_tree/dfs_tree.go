@@ -73,6 +73,10 @@ func deleteFromBST(root *helpers.TreeNode, val int) *helpers.TreeNode {
 	} else if val < root.Val {
 		root.Left = deleteFromBST(root.Left, val)
 	} else {
+		// we're returning the value here. We're deleting no matter what.
+		// in the case that we call deleteFromBST, we will traverse until we get to that leaf node,
+		// and then set it's parent's root.Left/root.Right to nil, because that's what this current node's
+		// children will be
 		if root.Left == nil {
 			return root.Right
 		} else if root.Right == nil {
