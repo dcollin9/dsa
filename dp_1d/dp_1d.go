@@ -49,6 +49,9 @@ func fibonacciWMemoization(n int, m map[int]int) int {
 // Time Complexity: O(n)
 // Space Complexity: O(1)
 func fibonacciDP(n int) int {
+	if n < 2 {
+		return n
+	}
 	n1, n2 := 0, 1
 	for i := 2; i <= n; i++ {
 		tmp := n1
