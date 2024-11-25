@@ -13,6 +13,9 @@ func main() {
 }
 
 // count the number of paths that lead from a source to destination
+
+// Time Complexity: O(e) worst case? Could traverse every edge.
+// Space Complexity: O(v) because of the call stack worst case?
 func dfs(adjList map[string][]string, node, target string, visited map[string]bool) int {
 	if active, ok := visited[node]; ok && active {
 		return 0
