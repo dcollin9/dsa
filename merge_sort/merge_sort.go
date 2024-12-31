@@ -35,7 +35,7 @@ func merge(arr []int, s, e, m int) {
 	// Otherwise the copy function won't do anything bc it goes only to the lenght of the
 	// shorter array, which in this case is size 0
 	lArr := make([]int, m-s+1)
-	rArr := make([]int, e-m)
+	rArr := make([]int, e-m) // if these are the wrong size, there will be a 0 at the end of the array, making it so that my array is filled with 0s
 
 	copy(lArr, arr[s:m+1])
 	copy(rArr, arr[m+1:e+1])
